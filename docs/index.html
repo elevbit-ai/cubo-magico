@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cubo Mágico 3D — por Joaquim Pedro de Morais Filho</title>
+<meta name="description" content="O clássico cubo mágico, em 3D, para Windows. Gire com o mouse ou o teclado, embaralhe e resolva. App nativo (MSIX) e jogável no navegador.">
+<link rel="icon" href="img/icon.png">
+<style>
+  :root{
+    --bg:#13131b; --bg2:#1a1a24; --card:#20202e; --line:#2c2c3c;
+    --fg:#f4f4f8; --muted:#a6a6b8; --indigo:#6366f1; --indigo2:#818cf8;
+    --rose:#f43f5e; --accent:#a5b4fc;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--fg);line-height:1.6}
+  a{color:var(--indigo2);text-decoration:none}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  header{padding:64px 0 40px;text-align:center;background:
+    radial-gradient(900px 400px at 50% -10%, rgba(99,102,241,.22), transparent 70%),var(--bg)}
+  .logo{width:84px;height:84px;border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,.5);margin-bottom:18px}
+  h1{font-size:clamp(34px,6vw,54px);font-weight:800;letter-spacing:.01em}
+  h1 .accent{color:var(--accent)}
+  .tag{color:var(--muted);font-size:clamp(15px,2.4vw,19px);max-width:640px;margin:14px auto 0}
+  .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:12px;font-weight:700;font-size:15px;transition:transform .06s,background .15s;color:#fff}
+  .btn:active{transform:scale(.96)}
+  .btn-primary{background:var(--indigo)}.btn-primary:hover{background:var(--indigo2)}
+  .btn-ghost{background:var(--card);border:1px solid var(--line);color:var(--fg)}
+  .btn-ghost:hover{border-color:var(--indigo)}
+  .shot{display:block;width:100%;max-width:820px;margin:44px auto 0;border-radius:16px;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.55)}
+  section{padding:52px 0;border-top:1px solid var(--line)}
+  h2{font-size:26px;font-weight:800;margin-bottom:22px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .card .ic{font-size:26px}.card h3{font-size:16px;margin:10px 0 6px}.card p{color:var(--muted);font-size:14px}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);font-size:15px}
+  th{background:#262636;color:var(--accent);font-weight:700}
+  tr:last-child td{border-bottom:none}
+  kbd{background:#2b2b3d;border:1px solid #3a3a50;border-bottom-width:2px;border-radius:6px;padding:2px 8px;font-family:inherit;font-size:13px;font-weight:700}
+  .store{display:flex;align-items:center;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;flex-wrap:wrap}
+  footer{padding:40px 0 64px;text-align:center;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+  .pill{display:inline-block;background:#262636;border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:13px;color:var(--accent);margin-bottom:18px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <img class="logo" src="img/icon.png" alt="Cubo Mágico 3D">
+    <div class="pill">🪟 App nativo para Windows · 🌐 também jogável no navegador</div>
+    <h1>Cubo <span class="accent">Mágico</span> 3D</h1>
+    <p class="tag">O clássico cubo mágico, em 3D. Gire as peças com o mouse ou o teclado,
+      embaralhe e tente resolver — no seu ritmo, 100% local e sem anúncios.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="play/">▶ Jogar agora</a>
+      <a class="btn btn-ghost" href="https://apps.microsoft.com/detail/9NCBF09M4M0S">🛒 Microsoft Store</a>
+      <a class="btn btn-ghost" href="https://github.com/elevbit-ai/cubo-magico/releases/latest">⬇ Baixar (.zip / .msix)</a>
+    </div>
+    <img class="shot" src="img/screenshot.png" alt="Cubo Mágico 3D em ação">
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Recursos</h2>
+    <div class="grid">
+      <div class="card"><div class="ic">🧊</div><h3>Cubo 3×3 em 3D</h3><p>Um cubo mágico de verdade em três dimensões, com animação suave.</p></div>
+      <div class="card"><div class="ic">🖱️</div><h3>Mouse natural</h3><p>Arraste uma peça para girar a camada; arraste o fundo para orbitar a câmera.</p></div>
+      <div class="card"><div class="ic">⌨️</div><h3>Teclado</h3><p>Notação U/D/L/R/F/B, Shift para o inverso e Espaço para embaralhar.</p></div>
+      <div class="card"><div class="ic">🔒</div><h3>Privado e offline</h3><p>Roda 100% local. Sem internet, sem anúncios, sem cadastro, sem coletar dados.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Como jogar</h2>
+    <table>
+      <tr><th>Ação</th><th>Mouse</th><th>Teclado</th></tr>
+      <tr><td>Girar uma camada</td><td>Arraste uma peça</td><td><kbd>U</kbd> <kbd>D</kbd> <kbd>L</kbd> <kbd>R</kbd> <kbd>F</kbd> <kbd>B</kbd> &nbsp;(<kbd>Shift</kbd> = inverso)</td></tr>
+      <tr><td>Girar a câmera</td><td>Arraste o fundo</td><td>—</td></tr>
+      <tr><td>Zoom</td><td>Scroll</td><td>—</td></tr>
+      <tr><td>Embaralhar</td><td>Botão <b>Embaralhar</b></td><td><kbd>Espaço</kbd></td></tr>
+      <tr><td>Resetar</td><td>Botão <b>Resetar</b></td><td>—</td></tr>
+    </table>
+    <p style="color:var(--muted);margin-top:14px;font-size:14px">U=cima, D=baixo, L=esquerda, R=direita, F=frente, B=trás — a notação padrão do cubo mágico.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Baixar</h2>
+    <div class="store">
+      <div style="flex:1;min-width:240px">
+        <h3 style="font-size:18px;margin-bottom:6px">Microsoft Store</h3>
+        <p style="color:var(--muted);font-size:14px">Instalação com um clique, atualizações automáticas.</p>
+      </div>
+      <a class="btn btn-primary" href="https://apps.microsoft.com/detail/9NCBF09M4M0S">Abrir na Store</a>
+    </div>
+    <div class="store" style="margin-top:14px">
+      <div style="flex:1;min-width:240px">
+        <h3 style="font-size:18px;margin-bottom:6px">Versão portátil</h3>
+        <p style="color:var(--muted);font-size:14px">Extraia o .zip e dê dois cliques. Requer o Microsoft Edge WebView2 Runtime (já incluso no Windows 11 e na maioria dos Windows 10).</p>
+      </div>
+      <a class="btn btn-ghost" href="https://github.com/elevbit-ai/cubo-magico/releases/latest">Baixar .zip / .msix</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Cubo Mágico 3D</strong> — criado por <strong>Joaquim Pedro de Morais Filho</strong> · j360074@hotmail.com</p>
+    <p style="margin-top:8px">Código aberto (MIT) em <a href="https://github.com/elevbit-ai/cubo-magico">github.com/elevbit-ai/cubo-magico</a></p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Cubo Magico 3D - Joaquim Pedro de Morais Filho (j360074@hotmail.com)
+     Para a Microsoft Store, troque Identity Name e Publisher pelos valores
+     do Partner Center (Product identity) e gere o pacote de novo. -->
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  IgnorableNamespaces="uap rescap">
+
+  <Identity
+    Name="JoaquimPedrodeMoraisFilho.CuboMagico3D"
+    Publisher="CN=Joaquim Pedro de Morais Filho"
+    Version="1.0.0.0"
+    ProcessorArchitecture="x64" />
+
+  <Properties>
+    <DisplayName>Cubo Mágico 3D</DisplayName>
+    <PublisherDisplayName>Joaquim Pedro de Morais Filho</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.22621.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="pt-BR" />
+    <Resource Language="en-US" />
+  </Resources>
+
+  <Applications>
+    <Application Id="CuboMagico" Executable="CubeHost.exe" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements
+        DisplayName="Cubo Mágico 3D"
+        Description="Cubo mágico 3D interativo: gire as peças com o mouse ou o teclado, embaralhe e resolva. Por Joaquim Pedro de Morais Filho."
+        BackgroundColor="#1A1A24"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\Square71x71Logo.png" />
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+</Package>

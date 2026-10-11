@@ -1,0 +1,17 @@
+# build output
+_pkg/
+_portable/
+dist/
+*.msix
+*.cer
+CubeHost.exe
+CuboMagico3D.exe
+# webview2 libs baixadas pelo build
+refs/
+libs/
+WebView2Loader.dll
+Microsoft.Web.WebView2.*.dll
+# temporários
+*.tmp
+_t.png
+cube-render.jpg
